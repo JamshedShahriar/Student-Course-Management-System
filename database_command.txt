@@ -1,0 +1,105 @@
+-- SQL Script: Student-Course-Instructor Database Schema
+
+-- Table: Student
+CREATE TABLE Student (
+    Student_ID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Email VARCHAR(100),
+    Phone VARCHAR(15),
+    Date_of_Birth DATE,
+    Address TEXT
+);
+
+-- Table: Course
+CREATE TABLE Course (
+    Course_ID INT PRIMARY KEY,
+    Course_Name VARCHAR(100),
+    Credits INT,
+    Department VARCHAR(100)
+);
+
+-- Table: Instructor
+CREATE TABLE Instructor (
+    Instructor_ID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Email VARCHAR(100),
+    Phone VARCHAR(15),
+    Department VARCHAR(100)
+);
+
+-- Table: Enrollment (Associative Entity)
+CREATE TABLE Enrollment (
+    Enrollment_ID INT PRIMARY KEY,
+    Student_ID INT,
+    Course_ID INT,
+    Enrollment_Date DATE,
+    Grade VARCHAR(5),
+    FOREIGN KEY (Student_ID) REFERENCES Student(Student_ID),
+    FOREIGN KEY (Course_ID) REFERENCES Course(Course_ID)
+);
+
+-- Table: Course_Instructor (Associative Entity)
+CREATE TABLE Course_Instructor (
+    Course_ID INT,
+    Instructor_ID INT,
+    Assignment_Date DATE,
+    PRIMARY KEY (Course_ID, Instructor_ID),
+    FOREIGN KEY (Course_ID) REFERENCES Course(Course_ID),
+    FOREIGN KEY (Instructor_ID) REFERENCES Instructor(Instructor_ID)
+);
+
+
+
+
+PHP ------------------------
+Student - ADD
+<?php
+require 'db.php';
+
+$name = $_POST['name'];
+$email = $_POST['email'];
+$phone = $_POST['phone'];
+$dob = $_POST['dob'];
+$address = $_POST['address'];
+
+$sql = \"INSERT INTO Students (Name, Email, Phone, Date_of_Birth, Address) 
+        VALUES (?, ?, ?, ?, ?)\";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('sssss', $name, $email, $phone, $dob, $address);
+$stmt->execute();
+
+header('Location: ../index.html');
+exit();
+?>
+
+----------------------------------------
+php/add_course_instructor.php
+
+php
+Copy
+Edit
+<?php
+require 'db.php';
+
+$courseId = $_POST['courseId'];
+$instructorId = $_POST['instructorId'];
+$assignmentDate = $_POST['assignmentDate'];
+
+$sql = "INSERT INTO Course_Instructor (Course_ID, Instructor_ID, Assignment_Date) 
+        VALUES (?, ?, ?)";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('iis', $courseId, $instructorId, $assignmentDate);
+$stmt->execute();
+
+header('Location: ../index.html'); // or admin_panel.php
+exit();
+?>
+
+
+
+
+
+
+
+

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Course Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <h1>Student Course Management System</h1>
+
+        <nav>
+            <ul>
+                <li><button class="register">Register</button></li>
+                <li><button class="add-view">Add / View</button></li>
+                <li><button class="issue">Assign</button></li>
+                <li><button class="return">Remove</button></li>
+                <li><button class="view-issued">View</button></li>
+                <li><button class="logout">Logout</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ================= MAIN ================= -->
+    <main>
+
+        <!-- ===== Students ===== -->
+        <section data-title="Students">
+            <h2>Students</h2>
+            <form>
+                <input type="text" placeholder="Student Name">
+                <input type="email" placeholder="Email">
+                <input type="text" placeholder="Department">
+                <button type="submit">Add Student</button>
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Rahim</td>
+                        <td>rahim@mail.com</td>
+                        <td>CSE</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Karim</td>
+                        <td>karim@mail.com</td>
+                        <td>BBA</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ===== Courses ===== -->
+        <section data-title="Courses">
+            <h2>Courses</h2>
+            <form>
+                <input type="text" placeholder="Course Name">
+                <input type="text" placeholder="Course Code">
+                <input type="number" placeholder="Credit">
+                <button type="submit">Add Course</button>
+            </form>
+        </section>
+
+        <!-- ===== Instructors ===== -->
+        <section data-title="Instructors">
+            <h2>Instructors</h2>
+            <form>
+                <input type="text" placeholder="Instructor Name">
+                <input type="email" placeholder="Email">
+                <input type="text" placeholder="Specialization">
+                <button type="submit">Add Instructor</button>
+            </form>
+        </section>
+
+        <!-- ===== Course Instructors ===== -->
+        <section data-title="Course Instructors">
+            <h2>Course Instructors</h2>
+            <form>
+                <input type="text" placeholder="Course Code">
+                <input type="text" placeholder="Instructor Name">
+                <button type="submit">Assign Instructor</button>
+            </form>
+        </section>
+
+        <!-- ===== Enrollments ===== -->
+        <section data-title="Enrollments">
+            <h2>Enrollments</h2>
+            <form>
+                <input type="text" placeholder="Student ID">
+                <input type="text" placeholder="Course Code">
+                <button type="submit">Enroll Student</button>
+            </form>
+        </section>
+
+    </main>
+
+</body>
+</html>
